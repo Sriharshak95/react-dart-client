@@ -17,17 +17,17 @@ function Home() {
             (result)=>{
                 setLoaded(true);
                 var mv=0,etf=0;
-                for(var i=0;i<result.length;i++){
+                for(var i=0;i<result.Shares.length;i++){
                     if(i<4){
-                        mv+=result[i].portfolio_value;
+                        mv+=result.Shares[i].portfolio_value;
                     }
                     if(i>=4){
-                        etf+=result[i].portfolio_value;
+                        etf+=result.Shares[i].portfolio_value;
                     }
                 }
                 etf = Math.round(etf*100)/100;
                 dispatch(storeMarketData({mv,etf}));
-                dispatch(storeData(result)); 
+                dispatch(storeData(result.Shares)); 
             })
     });
 
